@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Main-Class: npDev.telegramBot.cnSecurity.Bot
-Class-Path: . gson-2.8.6.jar okio-1.15.0.jar logging-interceptor-3.12.10.j
- ar okhttp-3.12.10.jar java-telegram-bot-api-5.0.0.jar
+Class-Path: logging-interceptor-3.12.10.jar okhttp-3.12.10.jar gson-2.8.
+ 6.jar java-telegram-bot-api-5.1.0.jar okio-1.15.0.jar
 
