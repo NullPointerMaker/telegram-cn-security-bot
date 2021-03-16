@@ -14,7 +14,7 @@ public class PhotoHandler extends FileHandler {
 
     public void doCheck() {
         // TODO 先检查安全性
-        if (message.hasURL()) {
+        if (message.hasUrl()) {
             super.doCheck();
         }
     }

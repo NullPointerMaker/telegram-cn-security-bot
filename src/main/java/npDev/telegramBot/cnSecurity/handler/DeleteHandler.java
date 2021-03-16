@@ -44,7 +44,7 @@ public class DeleteHandler {
         MessageShell targetReplyTo = target.getReplyToMessage();//
         if (!targetReplyTo.isNull()) {//目标有回复对象
             doDelete(targetReplyTo);
-        } else if (target.hasText() && !target.hasURL()) {//目标没有回复对象且是不含链接的纯文本
+        } else if (target.hasText() && !target.hasUrl()) {//目标没有回复对象且是不含链接的纯文本
             target.doDelete(bot);
             command.doDelete(bot);
             return;

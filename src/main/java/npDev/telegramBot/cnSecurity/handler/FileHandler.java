@@ -19,7 +19,7 @@ public class FileHandler extends LinkHandler {
 
     public void doCheck() {
         // TODO 先检查安全性
-        if (message.hasURL()) {
+        if (message.hasUrl()) {
             super.doCheck();
         }
     }

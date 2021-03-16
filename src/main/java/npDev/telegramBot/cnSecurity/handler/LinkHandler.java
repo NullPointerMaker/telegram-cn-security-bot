@@ -21,112 +21,109 @@ public class LinkHandler {
             TIP_REPOST = "已尝试脱敏，下为处理后消息。",
             TIP_REPOST_PUBLIC = "已尝试脱敏，下为处理后消息。回复 `/delete` 可删除。",//public
             TIP_ARCHIVE = "尝试脱敏失败。\n图文内容建议用 @CNArchiveBot 转录为 Telegraph 后分享。\n多媒体和文件建议下载后上传到 Telegram。",
-    //            TIP_CLOUD = "网盘文件与账号相关联，会泄露分享者和访问者的个人信息。\n建议 2GB 内文件直接发送。超出可采用分割压缩的办法。如何分割压缩请自行搜索。",
-    REGEX_PREFIX = "(?i)https?://([\\w-]+\\.)*(", REGEX_SUFFIX = "(:\\d+)?)([/#?]\\S*)?",
+            REGEX_PREFIX = "(?i)https?://([\\w-]+\\.)*(", REGEX_SUFFIX = "(:\\d+)?)([/#?]\\S*)?",
             REGEX_PASS = "tg://\\S*|" +
                     "\\S+@\\S+\\.\\w+|" + REGEX_PREFIX//忽略
                     + "t(\\.me|e\\.?legra(\\.ph|m\\.org))"//telegram
                     + "|127\\.0\\.0\\.1|\\[::1]|localhost"//本地
                     + "|onion"//tor网络
                     + "|searx.be"//无追踪搜索引擎
-                    + REGEX_SUFFIX, REGEX_SAFE = REGEX_PREFIX//访问安全
-            + "gov"//美国政府
-            + "|4chan\\.org"//
-            + "|amnesty\\.org"//国际特赦
-            + "|apkpure\\.com"//
-            + "|appledaily\\.com"//苹果日报
-            +"|archive\\.org"//互联网档案
-            + "|bbc\\.com"//
-            + "|bloomberg(china)?\\.com"//彭博社
-            + "|bolshevik\\.info"//IDOM
-            + "|chinaworker\\.info"//中国劳工论坛
-            + "|chinadigitaltimes\\.net"//中国数字时代
-            + "|discord\\.com"//
-            + "|dw\\.com"//德国之声
-            + "|facebook\\.com"
-            + "|fandom\\.com"//
-            + "|ft(chinese)?\\.com"//金融时报
-            + "|github\\.com"//
-            + "|(docs|drive|support)\\.google\\.com"//
-            + "|greasyfork\\.org"//浏览器脚本
-            + "|humblebundle\\.com"//游戏促销
-            + "|inmediahk\\.net"//香港独立媒体
-            + "|ipfs\\.io"//
-            + "|iyouport\\.org"//
-            + "|lih(kg\\.com|\\.kg)"//连登
-            + "|mega\\.nz"//网盘
-            + "|marxist\\.tw"//IMT台湾
-            + "|marxists\\.org"//马克思主义文库
-            + "|matters\\.news"//区块链社交网站
-            + "|medium\\.com"//
-            + "|microsoft\\.com"//微软
-            + "|minghui\\.org"//明慧网
-            + "|mozilla\\.org"//firefox
-            + "|nswp\\.org"//世界性工作者权益组织
-            + "|nhk\\.or\\.jp"//日本NHK电视台
-            + "|ntdtv\\.com"//新唐人
-            + "|nytimes\\.com"//纽约时报
-            + "|patreon\\.com"//付费阅读平台
-            + "|pixiv\\.net"//p站
-            + "|ptt\\.cc"//批踢踢
-            + "|redants\\.sg"//beritaharian旗下红蚂蚁
-            + "|reuters\\.com"//路透社
-            + "|rthk\\.hk"//香港电台
-            + "|safeguarddefenders\\.com"//保护卫士
-            + "|steampowered\\.com"//steam
-            + "|sleazyfork\\.org"//浏览器脚本
-            + "|theguardian\\.com"//卫报
-            + "|theinitium\\.com"//端传媒
-            + "|vox\\.com"//福克斯
-            + "|wenxuecity\\.com"//文学城
-            + "|wikia\\.org"//
-            + "|wsj\\.com"//华尔街日报
-            + REGEX_SUFFIX, REGEX_SAFE_WARN = REGEX_PREFIX//访问不安全
-            + "appinn\\.com"//小众
-            + "|baike\\.baidu\\.com"//百度百科
-            + "|biliob\\.com"//观测站
-            + "|caixin\\.com"//财新
-            + "|cbndata\\.com"//
-            + "|chouti\\.com"//抽屉
-            + "|cnbeta\\.com"//
-            + "|coolapk\\.com"//酷安
-            + "|deshangbao\\.com"//德商宝
-            + "|douban\\.com"//豆瓣
-            + "|eastday\\.com"//东方
-            + "|expreview\\.com"//超能评测
-            + "|(51gonghao|8values)\\.github\\.io"//github.io
-            + "|huawei\\.com"//华为
-            + "|iqiyi\\.com"//爱奇艺
-            + "|ithome\\.com"//it之家
-            + "|jandan\\.net"//煎蛋
-            + "|landiannews\\.com"//蓝点
-            + "|leiphone\\.com"//雷锋
-            + "|(new|mp\\.weixin)\\.qq\\.com(/s/\\S+)?"//腾讯新闻微信安全
-            + "|redchinacn\\.net"//红色中国网
-            + "|saraba1st\\.com"//s1
-            + "|sohu\\.com"//搜狐
-            + "|sspai\\.com"//少数派
-            + "|taobao\\.com"//淘宝
-            + "|tuhu\\.org"//途虎
-            + "|unionpayintl\\.com"//银联
-            + "|v2ex\\.com"//
-            + "|xinhuanet\\.com"//新华网
-            + "|yicai\\.com"//第一财经
-            + "|zhihu\\.com"//知乎
-            + REGEX_SUFFIX, REGEX_ARCHIVE = REGEX_PREFIX//需要存档无法脱敏
-            + "360kuai\\.com"//360快新闻
-            + "|baidu\\.com/video"//百度视频
-            + "|pan\\.baidu\\.com"//百度云百度网盘
-            + "|chouti\\.com/pic/show\\?\\S+"//抽屉分享
-            + "|mp\\.weixin\\.qq\\.com/s\\?\\S+"//微信
-            + "|partners\\.sina\\.cn"//新浪头条
-            + "|share\\.weiyun\\.com"//微云网盘
-            + REGEX_SUFFIX
-//        , REGEX_CLOUD = REGEX_PREFIX//网盘
-//            + "pan\\.baidu\\.com"//百度云百度网盘
-//            + "|share\\.weiyun\\.com"//微云网盘
-//            + REGEX_SUFFIX
-            ;
+                    + REGEX_SUFFIX,
+            REGEX_SAFE = REGEX_PREFIX//访问安全
+                    + "gov"//美国政府
+                    + "|4chan\\.org"//
+                    + "|amnesty\\.org"//国际特赦
+                    + "|apkpure\\.com"//
+                    + "|appledaily\\.com"//苹果日报
+                    + "|archive\\.org"//互联网档案
+                    + "|bbc\\.com"//
+                    + "|bloomberg(china)?\\.com"//彭博社
+                    + "|bolshevik\\.info"//IDOM
+                    + "|chinaworker\\.info"//中国劳工论坛
+                    + "|chinadigitaltimes\\.net"//中国数字时代
+                    + "|discord\\.com"//
+                    + "|dw\\.com"//德国之声
+                    + "|facebook\\.com"
+                    + "|fandom\\.com"//
+                    + "|ft(chinese)?\\.com"//金融时报
+                    + "|github\\.com"//
+                    + "|(docs|drive|support)\\.google\\.com"//
+                    + "|greasyfork\\.org"//浏览器脚本
+                    + "|humblebundle\\.com"//游戏促销
+                    + "|inmediahk\\.net"//香港独立媒体
+                    + "|ipfs\\.io"//
+                    + "|iyouport\\.org"//
+                    + "|lih(kg\\.com|\\.kg)"//连登
+                    + "|mega\\.nz"//网盘
+                    + "|marxist\\.tw"//IMT台湾
+                    + "|marxists\\.org"//马克思主义文库
+                    + "|matters\\.news"//区块链社交网站
+                    + "|medium\\.com"//
+                    + "|microsoft\\.com"//微软
+                    + "|minghui\\.org"//明慧网
+                    + "|mozilla\\.org"//firefox
+                    + "|nswp\\.org"//世界性工作者权益组织
+                    + "|nhk\\.or\\.jp"//日本NHK电视台
+                    + "|ntdtv\\.com"//新唐人
+                    + "|nytimes\\.com"//纽约时报
+                    + "|patreon\\.com"//付费阅读平台
+                    + "|pixiv\\.net"//p站
+                    + "|ptt\\.cc"//批踢踢
+                    + "|redants\\.sg"//beritaharian旗下红蚂蚁
+                    + "|reuters\\.com"//路透社
+                    + "|rthk\\.hk"//香港电台
+                    + "|safeguarddefenders\\.com"//保护卫士
+                    + "|steampowered\\.com"//steam
+                    + "|sleazyfork\\.org"//浏览器脚本
+                    + "|theguardian\\.com"//卫报
+                    + "|theinitium\\.com"//端传媒
+                    + "|vox\\.com"//福克斯
+                    + "|wenxuecity\\.com"//文学城
+                    + "|wikia\\.org"//
+                    + "|wsj\\.com"//华尔街日报
+                    + REGEX_SUFFIX,
+            REGEX_SAFE_WARN = REGEX_PREFIX//访问不安全
+                    + "appinn\\.com"//小众
+                    + "|baike\\.baidu\\.com"//百度百科
+                    + "|biliob\\.com"//观测站
+                    + "|caixin\\.com"//财新
+                    + "|cbndata\\.com"//
+                    + "|chouti\\.com"//抽屉
+                    + "|cnbeta\\.com"//
+                    + "|coolapk\\.com"//酷安
+                    + "|deshangbao\\.com"//德商宝
+                    + "|douban\\.com"//豆瓣
+                    + "|eastday\\.com"//东方
+                    + "|expreview\\.com"//超能评测
+                    + "|(51gonghao|8values)\\.github\\.io"//github.io
+                    + "|huawei\\.com"//华为
+                    + "|iqiyi\\.com"//爱奇艺
+                    + "|ithome\\.com"//it之家
+                    + "|jandan\\.net"//煎蛋
+                    + "|landiannews\\.com"//蓝点
+                    + "|leiphone\\.com"//雷锋
+                    + "|(new|mp\\.weixin)\\.qq\\.com(/s/\\S+)?"//腾讯新闻微信安全
+                    + "|redchinacn\\.net"//红色中国网
+                    + "|saraba1st\\.com"//s1
+                    + "|sohu\\.com"//搜狐
+                    + "|sspai\\.com"//少数派
+                    + "|taobao\\.com"//淘宝
+                    + "|tuhu\\.org"//途虎
+                    + "|unionpayintl\\.com"//银联
+                    + "|v2ex\\.com"//
+                    + "|xinhuanet\\.com"//新华网
+                    + "|yicai\\.com"//第一财经
+                    + "|zhihu\\.com"//知乎
+                    + REGEX_SUFFIX,
+            REGEX_ARCHIVE = REGEX_PREFIX//需要存档无法脱敏
+                    + "360kuai\\.com"//360快新闻
+                    + "|baidu\\.com/video"//百度视频
+                    + "|pan\\.baidu\\.com"//百度云百度网盘
+                    + "|chouti\\.com/pic/show\\?\\S+"//抽屉分享
+                    + "|mp\\.weixin\\.qq\\.com/s\\?\\S+"//微信
+                    + "|partners\\.sina\\.cn"//新浪头条
+                    + "|share\\.weiyun\\.com"//微云网盘
+                    + REGEX_SUFFIX;
     protected final MessageShell message;
     private final OkHttpClient client;
     private final boolean isPrivate;
@@ -151,26 +148,21 @@ public class LinkHandler {
     }
 
     public void doCheck() {
-        String[] markdownAndURLs = message.toMarkdownAndURLs();
-        if (markdownAndURLs == null) {
+        String[] markdownAndUrls = message.toMarkdownAndUrls();
+        if (markdownAndUrls == null) {
             return;
         }
         message.getChat().doTyping(bot);
-        String[] urls = Arrays.copyOfRange(markdownAndURLs, 1, markdownAndURLs.length);
+        String[] urls = Arrays.copyOfRange(markdownAndUrls, 1, markdownAndUrls.length);
         for (int i = 0; i < urls.length; i++) {
             boolean isMarkdown = urls[i].contains("\\");
             urls[i] = urls[i].replace("\\", "");
-            urls[i] = checkURL(urls[i], false);
+            urls[i] = checkUrl(urls[i], false);
             if (urls[i] != null && isMarkdown) {
                 urls[i] = Utilities.completeToMarkdown(urls[i]);
             }
         }
         switch (level) {
-//            case CLOUD:
-//                if (doReply(TIP_CLOUD, TIP_UNSAFE_PUBLIC)) {
-//                    doDelete();
-//                }
-//                break;
             case ARCHIVE:
                 if (doReply(TIP_UNSAFE_WARN, TIP_ARCHIVE, TIP_UNSAFE_PUBLIC)) {
                     doDelete();
@@ -178,13 +170,13 @@ public class LinkHandler {
                 break;
             case REPOST_WARN:
                 if (doReply(TIP_UNSAFE_WARN, TIP_UNSAFE_PUBLIC, TIP_REPOST_PUBLIC)) {
-                    doRepost(markdownAndURLs[0], urls, true);
+                    doRepost(markdownAndUrls[0], urls, true);
                     doDelete();
                 }
                 break;
             case REPOST:
                 if (doReply(TIP_UNSAFE, TIP_UNSAFE_PUBLIC, TIP_REPOST_PUBLIC)) {
-                    doRepost(markdownAndURLs[0], urls, false);
+                    doRepost(markdownAndUrls[0], urls, false);
                     doDelete();
                 }
                 break;
@@ -277,90 +269,86 @@ public class LinkHandler {
      * @param isTarget 是否已经解析
      * @return 无风险的链接或无链接
      */
-    private String checkURL(String url, boolean isTarget) {
+    private String checkUrl(String url, boolean isTarget) {
 //		if(!url.toLowerCase().startsWith("http")) {//ftp
 //			setLevel(Level.OTHER_WARN);
 //			return url;
 //		}
-//        if (url.matches(REGEX_CLOUD)) {
-//            setLevel(Level.CLOUD);
-//            return null;
-//        }
         if (url.matches(REGEX_ARCHIVE)) {// 无法脱敏
             setLevel(Level.ARCHIVE);// 无法脱敏
             return null;
         }
         if (url.matches(REGEX_SAFE_WARN)) {
-            return trimURL(url, true);
+            return trimUrl(url, true);
         }
         if (isTarget && url.matches(REGEX_PREFIX + "cn" + REGEX_SUFFIX)) {
-            return trimURL(url, true);
+            return trimUrl(url, true);
         }
         if (url.matches(REGEX_PREFIX + "gov\\.cn" + REGEX_SUFFIX)) {//政府网站
-            return trimURL(url, true, "code");
+            return trimUrl(url, true, "code");
         }
         if (url.matches(REGEX_PREFIX + "music\\.163\\.com" + REGEX_SUFFIX)) {//网易云音乐
-            return trimURL(url, true, "id");
+            return trimUrl(url, true, "id");
         }
         if (url.matches(REGEX_PREFIX + "open\\.163\\.com" + REGEX_SUFFIX)) {//网易公开课
-            return trimURL(url, true, "plid","pid","mid");
+            return trimUrl(url, true, "plid", "pid", "mid");
         }
 //		if(url.matches(REGEX_PREFIX+"baidu\\.com/video"+REGEX_SUFFIX)) {//百度视频
-//			return trimURL(url,true,"cambrian_id","word","atn","nid");
+//			return trimUrl(url,true,"cambrian_id","word","atn","nid");
 //		}
         if (url.matches(REGEX_PREFIX + "baijiahao\\.baidu\\.com" + REGEX_SUFFIX)) {//百度百家号
-            return trimURL(url, true, "id");
+            return trimUrl(url, true, "id");
         }
         if (url.matches(REGEX_PREFIX + "b(ilibili\\.com|23\\.tv/[ab]v\\S+)" + REGEX_SUFFIX)) {//bilibili
-            return trimURL(url, true, "p");
+            return trimUrl(url, true, "p");
         }
         if (url.matches(REGEX_PREFIX + "ngabbs\\.com" + REGEX_SUFFIX)) {
-            return trimURL(url, true, "tid");
+            return trimUrl(url, true, "tid");
         }
         if (url.matches(REGEX_PREFIX + "qzone\\.qq\\.com" + REGEX_SUFFIX)) {
-            return trimURL(url, true, "res_uin", "cellid", "appid");
+            return trimUrl(url, true, "res_uin", "cellid", "appid");
         }
         if (url.matches(REGEX_PREFIX + "solidot\\.org" + REGEX_SUFFIX)) {
-            return trimURL(url, true, "sid", "issue");
+            return trimUrl(url, true, "sid", "issue");
         }
         if (url.matches(REGEX_PREFIX + "weibo\\.(com|cn)" + REGEX_SUFFIX)) {//微博
-            return trimURL(url, true, "containerid");
+            return trimUrl(url, true, "containerid");
         }
         if (url.matches(REGEX_SAFE)) {
-            return trimURL(url, false);
+            return trimUrl(url, false);
         }
         if (url.matches(REGEX_PREFIX + "podcast\\.apple\\.com" + REGEX_SUFFIX)) {//苹果
-            return trimURL(url, false, "i");
+            return trimUrl(url, false, "i");
         }
         if (url.matches(REGEX_PREFIX + "blogspot\\.com" + REGEX_SUFFIX)) {
-            return trimURL(url, false, "m");
+            return trimUrl(url, false, "m");
         }
         if (url.matches(REGEX_PREFIX + "chinapress\\.com\\.my" + REGEX_SUFFIX)) {//马来西亚中国报
-            return trimURL(url, false, "p");
+            return trimUrl(url, false, "p");
         }
         if (url.matches(REGEX_PREFIX + "chinarightsia\\.org" + REGEX_SUFFIX)) {//中国权利在行动
-            return trimURL(url, false, "p", "cat");
+            return trimUrl(url, false, "p", "cat");
         }
         if (url.matches(REGEX_PREFIX + "play\\.google\\.com" + REGEX_SUFFIX)) {//谷歌play
-            return trimURL(url, false, "id");
+            return trimUrl(url, false, "id");
         }
         if (url.matches(REGEX_PREFIX + "now\\.com" + REGEX_SUFFIX)) {//电讯盈科
-            return trimURL(url, false, "newsId");
+            return trimUrl(url, false, "newsId");
         }
         if (url.matches(REGEX_PREFIX + "forms\\.office\\.com" + REGEX_SUFFIX)) {//office
-            return trimURL(url, false, "id");
+            return trimUrl(url, false, "id");
         }
         if (url.matches(REGEX_PREFIX + "redd(it\\.com|\\.it)" + REGEX_SUFFIX)) {//reddit
-            return trimURL(url, false, "context","width","s","auto");
+            return trimUrl(url, false, "context", "width", "s", "auto");
         }
         if (url.matches(REGEX_PREFIX + "tw(itter|img)\\.com" + REGEX_SUFFIX)) {//twitter
-            return trimURL(url, false, "s");
+            return trimUrl(url, false, "s");
         }
         if (url.matches(REGEX_PREFIX + "wik(i(news|pedia)|tionary)\\.org" + REGEX_SUFFIX)) {//维基
-            return trimURL(url, false, "title", "action", "section", "curid", "diff", "oldid");
+            return trimUrl(url, false, "title", "action", "section", "curid", "diff", "oldid");
         }
         if (url.matches(REGEX_PREFIX + "youtu(be\\.com|\\.be)" + REGEX_SUFFIX)) {//youtube
-            return trimURL(url, false, "v", "t");
+            return trimUrl(url, false, "v", "t");
         }
         if (url.matches(REGEX_PASS)) {
             setLevel(Level.PASS);
@@ -369,8 +357,8 @@ public class LinkHandler {
         }
         if (!isTarget) {//未安检过且未解析
             try {
-                url = getURLTarget(url);
-                return checkURL(url, true);
+                url = getUrlTarget(url);
+                return checkUrl(url, true);
             } catch (IllegalArgumentException | IOException e) {
                 e.printStackTrace();
 //				setLevel(Level.OTHER_WARN);
@@ -394,7 +382,7 @@ public class LinkHandler {
      * @param allowedParas 要保留的参数
      * @return 仅保留指定参数的url
      */
-    private String trimURL(String url, final boolean isWarn, final String... allowedParas) {
+    private String trimUrl(String url, final boolean isWarn, final String... allowedParas) {
 //		final String regex=isWarn?REGEX_SAFE_WARN:REGEX_SAFE;
         final Level safeLevel = isWarn ? Level.SAFE_WARN : Level.SAFE;
         final Level repostLevel = isWarn ? Level.REPOST_WARN : Level.REPOST;
@@ -439,7 +427,7 @@ public class LinkHandler {
      * @param url 原始 url
      * @return 原始url或目标url
      */
-    private String getURLTarget(String url) throws IllegalArgumentException, IOException {
+    private String getUrlTarget(String url) throws IllegalArgumentException, IOException {
         HttpUrl source = HttpUrl.get(url);
         Request request = new Request.Builder().url(source).head().addHeader("Accept-Language", "zh,zh-CN,zh-HK,zh-TW,zh-SG,zh-MY,zh-Hans,zh-Hant,*;q=0.9").build();
         Call call = client.newCall(request);
@@ -448,9 +436,9 @@ public class LinkHandler {
 //            String contentLanguage=response.header("Content-Language");
         HttpUrl target = response.request().url();
         response.close();
-        String newURL = target.toString();
+        String newUrl = target.toString();
         if (code == 301 || code == 302) {
-            return getURLTarget(newURL);
+            return getUrlTarget(newUrl);
         }
 //            if(contentLanguage!=null&&!contentLanguage.contains("zh")){//可能是非中文网站
 //                throw new RuntimeException("Content-Language");
@@ -458,7 +446,7 @@ public class LinkHandler {
         if (source.host().equals(target.host()) && source.encodedPath().equals(target.encodedPath())) {//链接与之前的主体部分一样
             return url;
         }
-        return newURL;
+        return newUrl;
     }
 
     private enum Level {

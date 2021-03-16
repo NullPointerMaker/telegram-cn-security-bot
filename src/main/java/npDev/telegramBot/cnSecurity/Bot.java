@@ -41,7 +41,7 @@ public class Bot extends Instance {
                 if (message.isNull()) {//不是新消息
                     message = new MessageShell(update.editedMessage());
                 }
-                if (message.hasURL()) {//消息含有链接
+                if (message.hasUrl()) {//消息含有链接
                     new LinkHandler(this, message).doCheck();
                     //continue;
                 }
